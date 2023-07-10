@@ -28,6 +28,13 @@
             </svelte:fragment>
         </AppBar>
     </svelte:fragment>
+    <svelte:fragment slot="pageFooter">
+        <AppBar>
+            <svelte:fragment slot="lead">(icon)</svelte:fragment>
+            (title)
+            <svelte:fragment slot="trail">(actions)</svelte:fragment>
+        </AppBar>
+    </svelte:fragment>
 
     <slot />
 
