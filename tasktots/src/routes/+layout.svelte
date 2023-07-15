@@ -9,9 +9,14 @@
     import { AppShell } from '@skeletonlabs/skeleton';
     import { AppBar } from '@skeletonlabs/skeleton';
     import Icon from "@iconify/svelte"
+    import { Drawer, drawerStore } from '@skeletonlabs/skeleton';
 
 
 </script>
+
+<Drawer let:data={drawerData}>
+    <!-- use the drawerData here -->
+</Drawer>
 
 <AppShell slotPageContent="bg-surface-500">
     <svelte:fragment slot="header">

@@ -1,9 +1,26 @@
-/*place global styles here */
+/* place global styles here */
 html,
 body {
-	@apply h-full overflow-hidden;
+    @apply h-full overflow-hidden;
 }
 
 .custom-shadow {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
+}
+
+/* Animation */
+@keyframes float {
+    0% {
+        transform: translatey(0px);
+    }
+    50% {
+        transform: translatey(-5px);
+    }
+    100% {
+        transform: translatey(0px);
+    }
+}
+
+.float-effect {
+    animation: float 3s ease-in-out infinite;
 }

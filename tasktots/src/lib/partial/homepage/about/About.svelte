@@ -3,6 +3,24 @@
     import Aboutcard from '$lib/partial/homepage/about/partials/Aboutcard.svelte'
     import Blogcard from '$lib/partial/homepage/about/partials/Blogcard.svelte'
     let valueSingle = 'about';
+
+    let currentCard = 'About'; // Initialize currentCard as 'About'
+    let CurrentComponent = Aboutcard; // Initialize CurrentComponent as Aboutcard
+
+    // Reactive statement that will update currentCard and CurrentComponent
+    // whenever valueSingle changes
+    $: {
+        if (valueSingle === 'about') {
+            currentCard = 'About';
+            CurrentComponent = Aboutcard;
+        } else if (valueSingle === 'blog') {
+            currentCard = 'Blog';
+            CurrentComponent = Blogcard;
+        } else {
+            currentCard = 'Tools';
+            CurrentComponent = null; // replace null with your other component
+        }
+    }
 </script>
 
 
@@ -27,19 +45,19 @@
                     <div>Check out our most recent Blog posts</div>
                 </ListBoxItem>
                 <ListBoxItem bind:group={valueSingle} name="medium" value="tools" class="pl-10">
-                    <div class="h2 font-bold">Lorem Ipsum</div>
-                    <div>TBD some other promotional card</div>
+                    <div class="h2 font-bold">Tools</div>
+                    <div>Learn about the current Task Tot tools</div>
                 </ListBoxItem>
             </ListBox>
         </div>
     </div>
 
     <div class="card bg-gradient-to-br variant-gradient-primary-secondary rounded-3xl w-1/2 flex flex-col">
-        <header class="card-header bg-surface-600 rounded-t-3xl py-8 h2 font-bold">About</header>
+        <header class="card-header bg-surface-600 rounded-t-3xl py-8 h2 font-bold">{currentCard}</header>
         <div class="flex-grow flex items-center justify-center px-10 py-10">
-            <Aboutcard />
+            {#if CurrentComponent}
+                <svelte:component this={CurrentComponent} />
+            {/if}
         </div>
     </div>
-
-
 </div>

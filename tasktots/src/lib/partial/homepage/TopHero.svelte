@@ -1,3 +1,6 @@
+<script>
+
+</script>
 
 
 
@@ -20,13 +23,12 @@
             <button type="button" class="btn variant-soft-success">Learn More</button>
         </div>
     </div>
+    <span class="divider-vertical h-80 w-0.5 border-b-blue-700" />
     <div class="card p-4 max-w-md flex justify-center items-center">
         <div class="flex justify-center items-center">
             <div class="grid place-items-center">
-                <img src="/tempadmin.png/" alt="Description of the image">
+                <img src="/tempadmin.png/" alt="Description of the image" class="float-effect">
             </div>
         </div>
     </div>
-
-
 </div>
