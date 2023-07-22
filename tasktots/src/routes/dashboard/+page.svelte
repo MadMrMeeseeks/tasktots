@@ -2,29 +2,25 @@
     import { tableMapperValues } from '@skeletonlabs/skeleton';
     import { Table, TabGroup, Tab, CodeBlock, type TableSource } from '@skeletonlabs/skeleton';
 
-
     const sourceData = [
-        { position: 1, name: 'Clean', weight: 1.0079, symbol: 'H' },
-        { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-        { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-        { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-        { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
+        { position: 1, name: 'Clean Basement', desc: "Tidy the boys side of the basement", points: '10', isComplete: 'no' },
     ];
 
     const tableSimple: TableSource = {
         // A list of heading labels.
-        head: ['Name', 'Symbol', 'Weight'],
+        head: ['Chore', 'Description', 'Points', 'Complete?'],
         // The data visibly shown in your table body UI.
-        body: tableMapperValues(sourceData, ['name', 'symbol', 'weight']),
+        body: tableMapperValues(sourceData, ['name', 'desc', 'points', 'isComplete']),
         // Optional: The data returned when interactive is enabled and a row is clicked.
-        meta: tableMapperValues(sourceData, ['position', 'name', 'symbol', 'weight']),
+        meta: tableMapperValues(sourceData, ['position', 'name', 'desc', 'points', 'isComplete']),
         // Optional: A list of footer labels.
-        foot: ['Total', '', '<code class="code">5</code>']
+        foot: ['Total', '', '<code class="code">5</code>', '']
     };
+
 
 
 </script>
 
 <div class="mt-20 mx-20">
-<Table source={tableSimple} />
+    <Table source={tableSimple} />
 </div>
