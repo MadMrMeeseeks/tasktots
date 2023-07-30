@@ -6,17 +6,27 @@
 	import '@skeletonlabs/skeleton/styles/skeleton.css';
 	// Most of your app wide CSS should be put in this file
 	import '../app.postcss';
+    import { goto } from '$app/navigation';
     import { AppShell } from '@skeletonlabs/skeleton';
     import { AppBar } from '@skeletonlabs/skeleton';
     import Icon from "@iconify/svelte"
-    import { Drawer, drawerStore } from '@skeletonlabs/skeleton';
+
+    import {auth, user} from "$lib/firebase";
+    import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+
+
+    async function handleSignOut() {
+        try {
+            await signOut(auth);
+            goto('/');
+        } catch (error) {
+            console.error("Error signing out: ", error);
+        }
+    }
 
 
 </script>
 
-<Drawer let:data={drawerData}>
-    <!-- use the drawerData here -->
-</Drawer>
 
 <AppShell slotPageContent="bg-surface-500">
     <svelte:fragment slot="header">
@@ -24,12 +34,16 @@
         <AppBar shadow="custom-shadow" background="bg-surface-800">
             <svelte:fragment slot="lead">
                 <Icon icon="mingcute:check-2-line" style="font-size: 30px;"></Icon>
-                <strong class="ml-2 text-xl uppercase">Task Tots</strong>
+                <a href="/"><strong class="ml-2 text-xl uppercase">Task Tots</strong></a>
             </svelte:fragment>
             <svelte:fragment slot="trail">
-                <span>About</span>
                 <span>Blog</span>
-                <button type="button" class="btn variant-filled-primary">Get Started!</button>
+                <a href="/parentdash">Parents</a>
+                {#if $user}
+                    <button type="button" class="btn variant-filled-primary" on:click={handleSignOut}>Sign out</button>
+                    {:else}
+                    <a href="/login"><button type="button" class="btn variant-filled-primary">Get Started!</button></a>
+                    {/if}
             </svelte:fragment>
         </AppBar>
     </svelte:fragment>

@@ -8,6 +8,19 @@ body {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.75);
 }
 
+/* Chrome, Safari, Edge, Opera */
+.no-spinner::-webkit-outer-spin-button,
+.no-spinner::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.no-spinner {
+  -moz-appearance: textfield;
+}
+
+
 /* Animation */
 @keyframes float {
     0% {
